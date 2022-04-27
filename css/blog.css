@@ -1,0 +1,40 @@
+.slide{
+	height: 50vh;
+}
+.taj{
+	height: 40vh;
+}
+.city{
+	border:1px white solid !important;
+	text-decoration: none !important;
+}
+.social{
+	text-decoration: none;
+}
+.aa{
+	background-color:rgb(28, 24, 129 ) ;
+	width: 100%;
+}
+@media (max-width: 575px){
+	.grand{
+		margin-top: -3vh;
+	}
+	.albert{
+		margin-top: -7vh;
+	}
+	.hu{
+      margin-top: -7vh;
+	}
+	.our{
+		margin-top: -5vh;
+	}
+	.top{
+		font-size: 25px;
+	}
+	.sights{
+		margin-left: 2vw;
+	}
+	.blockquote{
+		font-size: 15px;
+	}
+}
