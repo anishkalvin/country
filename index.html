@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .header{
+    width: 100vw;
+    /* height: 100vh; */
+    background-color: rgb(92, 92, 205);
+}
+.main{
+    width: 80vw;
+    margin: auto;
+    
+}
+table{
+    width: 80vw;
+    max-width: 80vw;
+    overflow: auto;
+    
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+tr{
+    background-color: rgb(74, 70, 70);
+    color: white;
+}
+tr:nth-child(even){
+    background-color: rgb(74, 70, 70) ;
+    color: white;
+}
+
+th,td{
+    padding: 2%;
+}
+h2,h3{
+    text-align: center;
+    color: white;
+}
+form{
+    align-items: center;
+}
+input{
+    width: 50vw;
+    margin-left: 10vw;
+    height: 5vh;
+}
+button{
+    width: 13vw;
+    /* padding: 10px; */
+    background-color: green;
+    color: white;
+    border: none;
+    /* border-radius: 3px; */
+    height: 5vh;
+    /* margin-top: 10px; */
+}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>Basic Informatin Of a Country</h2>
+        <div class="main">
+            <div class="first">
+               <form onsubmit="fun();return false">
+                   <input type="text" id="search" placeholder="Enter a country name">
+                   <button type="submit">search</button>
+               </form>
+            </div>
+            <div class="second">
+                 <table>
+                    <tr>
+                        <th>Name</th>
+                        <td id="name"></td>
+                    </tr>
+                    <tr>
+                        <th>Capital</th>
+                        <td id="capital"></td>
+                    </tr>
+                    <tr>
+                        <th>Flag</th>
+                        <td><img src="" id="flags" width="100%" height="200px"></td>
+                    </tr>
+                    <tr>
+                        <th>Population</th>
+                        <td id="population"></td>
+                    </tr>
+                    <tr>
+                        <th>Area</th>
+                        <td id="area"></td>
+                    </tr>
+                    <tr>
+                        <th>Borders</th>
+                        <td id="borders"></td>
+                    </tr>
+                    <tr>
+                        <th>Time Zones</th>
+                        <td id="timezones"></td>
+                    </tr>
+                    <tr>
+                        <th>Landlocked</th>
+                        <td id="landlocked"></td>
+                    </tr>
+                    <tr>
+                        <th>Independent</th>
+                        <td id="independent"></td>
+                    </tr>
+                    <tr>
+                        <th>Region</th>
+                        <td id="region"></td>
+                    </tr>
+                    <tr>
+                        <th>Sub Region</th>
+                        <td id="subregion"></td>
+                    </tr>
+                    <tr>
+                        <th>Start of Week</th>
+                        <td id="startOfWeek"></td>
+                    </tr>
+                    <tr>
+                        <th>Map</th>
+                        <td><a href="" id="maps">View Map</a></td>
+                    </tr>
+                 </table>
+            </div>
+            <div class="footer">
+               <h3> Jyada information chahiye to google kro</h3>
+            </div>
+             
+        </div>
+      </div>
+      <script>
+     function fun(){
+    var search = document.getElementById("search").value
+    var response = new XMLHttpRequest()
+    response.open("get","https://restcountries.com/v3.1/name/"+search)
+    response.send()
+
+    response.addEventListener("load",()=>{
+        var [data] = JSON.parse(response.responseText)
+        document.getElementById("name").innerHTML=data.name.official
+        document.getElementById("capital").innerHTML=data.capital[0]
+        document.getElementById("flags").src=data.flags.svg
+        document.getElementById("population").innerHTML=data.population
+        document.getElementById("area").innerHTML=data.area
+        document.getElementById("borders").innerHTML=data.borders
+        document.getElementById("timezones").innerHTML=data.timezones
+        document.getElementById("landlocked").innerHTML=data.landlocked
+        document.getElementById("independent").innerHTML=data.independent
+        document.getElementById("region").innerHTML=data.region
+        document.getElementById("subregion").innerHTML=data.subregion
+        document.getElementById("startOfWeek").innerHTML=data.startOfWeek
+        document.getElementById("maps").href=data.maps.googleMaps
+    })
+}
+      </script>
+</body>
+</html>
